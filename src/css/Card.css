@@ -1,0 +1,43 @@
+.card-container {
+  width: 350px;
+  height: 400px;
+
+  padding: 40px;
+  border: 3px solid black;
+  border-radius: 5px;
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.card-container input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  outline: none;
+}
+
+.card-container label {
+  font-size: 18px;
+}
+
+.card-container button {
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  align-self: center;
+}
+
+.card-container button:hover {
+  background-color: black;
+  color: white;
+}
