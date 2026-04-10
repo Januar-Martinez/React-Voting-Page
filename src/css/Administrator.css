@@ -1,0 +1,28 @@
+.admin-title {
+  text-align: center;
+  font-family: "Showcard Gothic", Arial, sans-serif;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.admin-option {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 12px 20px;
+  width: 250px;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.icon {
+  width: 25px;
+  text-align: center;
+}
+
+.admin-option:hover {
+  background-color: black;
+  color: white;
+}

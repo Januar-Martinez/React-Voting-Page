@@ -1,10 +1,25 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import Administrator from "./pages/Administrator.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./index.css";
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoute>
+              <Administrator />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  </React.StrictMode>,
+);
