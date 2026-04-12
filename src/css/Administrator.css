@@ -4,6 +4,7 @@
   font-size: 24px;
   margin-bottom: 20px;
 }
+
 .admin-option {
   display: flex;
   align-items: center;
@@ -25,4 +26,43 @@
 .admin-option:hover {
   background-color: black;
   color: white;
+}
+
+.admin-option.active {
+  background-color: black;
+  color: white;
+}
+
+.admin-layout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-layout.expanded {
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.admin-layout.expanded .admin-card-wrapper {
+  width: 33vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-content {
+  display: none;
+}
+
+.admin-content.visible {
+  display: flex;
+  flex: 1;
+  padding: 40px;
+  align-items: flex-start;
 }

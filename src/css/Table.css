@@ -1,0 +1,172 @@
+.table-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 495px;
+}
+
+.table-scroll {
+  flex: 1;
+  overflow: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table-header-cell {
+  background-color: black;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 10px 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.table-row:nth-child(odd) td {
+  background-color: #f9f9f9;
+}
+
+.table-row:nth-child(even) td {
+  background-color: #ffffff;
+}
+
+.table-cell,
+.table-footer-cell {
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.column-filter-input {
+  width: 100%;
+  padding: 4px 8px;
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 4px;
+  font-size: 13px;
+  outline: none;
+}
+
+.column-filter-input::placeholder {
+  color: #aaa;
+}
+
+.pagination-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 4px;
+}
+
+.pagination-buttons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page-btn {
+  padding: 4px 10px;
+  border: 2px solid black;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.page-btn:hover:not(:disabled) {
+  background-color: black;
+  color: white;
+}
+
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.page-info {
+  font-size: 14px;
+  margin-left: 6px;
+}
+
+.page-size-select {
+  padding: 4px 8px;
+  border: 2px solid black;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 14px;
+  outline: none;
+}
+
+.email-link {
+  color: black;
+  text-decoration: underline;
+}
+
+.email-link:hover {
+  opacity: 0.6;
+}
+
+.action-btn {
+  padding: 6px 12px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.action-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.show-voters {
+  padding: 20px;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.show-voters-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.add-btn {
+  padding: 10px 24px;
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.add-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.table-wrapper {
+  width: 90%;
+  min-width: 400px;
+  max-width: 1200px;
+}
