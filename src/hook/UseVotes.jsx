@@ -49,7 +49,6 @@ export function UseVotes() {
   };
 
   const enviarSolicitud = async (metodo, parametros) => {
-
     try {
       const respuesta = await axios({
         method: metodo,

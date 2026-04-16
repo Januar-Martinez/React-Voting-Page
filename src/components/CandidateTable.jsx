@@ -14,7 +14,6 @@ const CandidateTable = ({ data, deleteCandidate }) => {
           accessor: "party",
           render: (row) => row.original.party || "Sin partido",
         },
-        { type: "text", label: "Votos", accessor: "votes" },
         {
           type: "actions",
           label: "Eliminar",
