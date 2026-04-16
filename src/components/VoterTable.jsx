@@ -11,7 +11,7 @@ const VoterTable = ({ data, deleteVoter }) => {
     { type: "boolean", label: "Ha votado", accessor: "hasVoted" },
     {
       type: "actions",
-      label: "Acciones",
+      label: "Eliminar",
       renderActions: (row) => (
         <button
           onClick={() => deleteVoter(row.original.id, row.original.name)}

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FaUsers, FaUserTie, FaChartBar, FaSignOutAlt } from "react-icons/fa";
 import ShowVoters from "../components/ShowVoters";
+import ShowCandidates from "../components/ShowCandidates";
 
 export default function Administrator() {
   const navigate = useNavigate();
@@ -57,9 +58,7 @@ export default function Administrator() {
 
       <div className={`admin-content ${activeSection ? "visible" : ""}`}>
         {activeSection === "votantes" && <ShowVoters />}
-        {activeSection === "candidatos" && (
-          <p>Aquí va la tabla de candidatos</p>
-        )}
+        {activeSection === "candidatos" && <ShowCandidates />}
         {activeSection === "estadisticas" && <p>Aquí van las estadísticas</p>}
       </div>
     </div>

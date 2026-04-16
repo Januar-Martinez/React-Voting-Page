@@ -4,33 +4,33 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { show_alerta } from "../Function";
 
-export function UseVoters() {
-  const url = "http://localhost:5109/api/voters";
+export function UseCandidates() {
+  const url = "http://localhost:5109/api/candidates";
 
-  const [voters, setvoters] = useState([]);
+  const [candidates, setCandidates] = useState([]);
   const [id, setId] = useState("");
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [party, setParty] = useState("");
   const [title, setTitle] = useState("");
 
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    getVoters();
+    getCandidates();
   }, []);
 
-  const getVoters = async () => {
+  const getCandidates = async () => {
     try {
       const respuesta = await axios.get(url);
-      setvoters(respuesta.data.data);
+      setCandidates(respuesta.data.data);
     } catch (error) {
-      show_alerta("Error al cargar votantes", "error");
+      show_alerta("Error al cargar candidatos", "error");
       console.log(error);
     }
   };
 
   const openModal = () => {
-    setTitle("Registrar Votante");
+    setTitle("Registrar Candidato");
     setShowModal(true);
   };
 
@@ -39,16 +39,13 @@ export function UseVoters() {
     let metodo;
 
     if (name.trim() === "") {
-      show_alerta("Escribe el nombre del votante", "warning");
-      return;
-    } else if (email.trim() === "") {
-      show_alerta("Escribe el email del votante", "warning");
+      show_alerta("Escribe el nombre del candidato", "warning");
       return;
     }
 
     parametros = {
       name: name.trim(),
-      email: email.trim(),
+      party: party.trim(),
     };
     metodo = "POST";
     enviarSolicitud(metodo, parametros);
@@ -70,7 +67,7 @@ export function UseVoters() {
       if (respuesta.status === 204 || respuesta.status === 200 || respuesta.status === 201) {
         show_alerta("Operación completada exitosamente", "success");
         setShowModal(false);
-        getVoters();
+        getCandidates();
       }
     } catch (error) {
       show_alerta("Error en la solicitud", "error");
@@ -78,10 +75,10 @@ export function UseVoters() {
     }
   };
 
-  const deleteVoter = (id, name) => {
+  const deleteCandidate = (id, name) => {
     const MySwal = withReactContent(Swal);
     MySwal.fire({
-      title: `¿Seguro de eliminar el votante ${name}?`,
+      title: `¿Seguro de eliminar el candidato ${name}?`,
       icon: "question",
       text: "No se podrá dar marcha atrás",
       showCancelButton: true,
@@ -92,24 +89,24 @@ export function UseVoters() {
         setId(id);
         enviarSolicitud("DELETE", null, id);
       } else {
-        show_alerta("El votante NO fue eliminado", "info");
+        show_alerta("El candidato NO fue eliminado", "info");
       }
     });
   };
 
   return {
-    voters,
+    candidates,
     id,
     setId,
     name,
     setName,
-    email,
-    setEmail,
+    party,
+    setParty,
     title,
     showModal,
     setShowModal,
     openModal,
     validar,
-    deleteVoter,
+    deleteCandidate,
   };
 }
