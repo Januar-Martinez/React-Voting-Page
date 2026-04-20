@@ -1,13 +1,13 @@
-import "../css/Administrator.css";
-import Card from "../components/MyCard";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { FaUsers, FaUserTie, FaChartBar, FaSignOutAlt } from "react-icons/fa";
-import ShowVoters from "../components/ShowVoters";
+import Card from "../components/MyCard";
+import "../css/Administrator.css";
+import { FaUserTie, FaChartBar, FaSignOutAlt } from "react-icons/fa";
+import { useCurrentUser } from "../hook/UseCurrentUser";
 import ShowCandidates from "../components/ShowCandidates";
-import ShowVotes from "../components/ShowVotes";
 
-export default function Administrator() {
+export default function Voter() {
+  const { name, EmailOrParty, HasVotedOrVotes } = useCurrentUser();
   const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState(null);
 
@@ -19,20 +19,12 @@ export default function Administrator() {
   const handleOption = (section) => {
     setActiveSection((prev) => (prev === section ? null : section));
   };
-
   return (
     <div className={`admin-layout ${activeSection ? "expanded" : ""}`}>
       <div className="admin-card-wrapper">
         <Card>
-          <h2 className="admin-heading admin-title">Administración</h2>
-
-          <div
-            className={`admin-option ${activeSection === "votantes" ? "active" : ""}`}
-            onClick={() => handleOption("votantes")}
-          >
-            <FaUsers className="icon" />
-            Votantes
-          </div>
+          <h2 className="admin-heading admin-title2">{name}</h2>
+          <h4 className="admin-heading admin-subtitle">{EmailOrParty}</h4>
 
           <div
             className={`admin-option ${activeSection === "candidatos" ? "active" : ""}`}
@@ -58,13 +50,10 @@ export default function Administrator() {
       </div>
 
       <div className={`admin-content ${activeSection ? "visible" : ""}`}>
-        {activeSection === "votantes" && <ShowVoters />}
         {activeSection === "candidatos" && (
-          <ShowCandidates showCandidateAdd={true} showCandidateDelete={true} />
+          <ShowCandidates showCandidateAdd={false} showCandidateDelete={false} />
         )}
-        {activeSection === "estadisticas" && (
-          <ShowVotes showVoteButton={false} />
-        )}
+        {activeSection === "estadisticas" && <p>Aquí van las estadísticas</p>}
       </div>
     </div>
   );

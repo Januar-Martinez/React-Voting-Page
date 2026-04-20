@@ -29,6 +29,16 @@ export function UseCandidates() {
     }
   };
 
+  const getCandidateById = async (id) => {
+  try {
+    const respuesta = await axios.get(`${url}/${id}`);
+    return respuesta.data.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
   const openModal = () => {
     setTitle("Registrar Candidato");
     setShowModal(true);
@@ -108,5 +118,6 @@ export function UseCandidates() {
     openModal,
     validar,
     deleteCandidate,
+    getCandidateById,
   };
 }

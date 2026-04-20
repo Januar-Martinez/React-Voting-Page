@@ -29,6 +29,16 @@ export function UseVoters() {
     }
   };
 
+  const getVoterById = async (id) => {
+  try {
+    const respuesta = await axios.get(`${url}/${id}`);
+    return respuesta.data.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
   const openModal = () => {
     setTitle("Registrar Votante");
     setShowModal(true);
@@ -111,5 +121,6 @@ export function UseVoters() {
     openModal,
     validar,
     deleteVoter,
+    getVoterById,
   };
 }
