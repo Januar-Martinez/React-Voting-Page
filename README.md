@@ -1,3 +1,23 @@
+# 🗳️ Sistema de Votación
+
+Aplicación web desarrollada en React que permite gestionar un sistema de votación con roles de administrador, votantes y candidatos.
+
+Incluye autenticación básica, gestión de datos y visualización de estadísticas en tiempo real.
+
+## 📸 Algunas Capturas
+![Login](./src/assets/Login.png)
+![AdminVoter](./src/assets/Admin-voter.png)
+![Stadistics](./src/assets/Estadisticas.png)
+
+## ✨ Funcionalidades
+
+- 🔐 Autenticación por roles (Admin, Votante, Candidato)
+- 👤 Gestión de votantes
+- 🧑‍💼 Gestión de candidatos
+- 🗳️ Sistema de votación (un voto por usuario)
+- 📊 Visualización de estadísticas
+- 🔄 Consumo de API REST
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

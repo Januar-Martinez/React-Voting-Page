@@ -6,8 +6,6 @@ import Modal from "../components/GenericModal";
 const ShowVotes = ({ showVoteButton = true }) => {
   const {
     statistics,
-    voterId,
-    setVoterId,
     candidateId,
     setCandidateId,
     title,
@@ -39,12 +37,6 @@ const ShowVotes = ({ showVoteButton = true }) => {
           onClose={() => setShowModal(false)}
           onSave={validar}
           fields={[
-            {
-              id: "voterId",
-              placeholder: "ID Votante",
-              value: voterId,
-              onChange: setVoterId,
-            },
             {
               id: "candidateId",
               placeholder: "ID Candidato",

@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { show_alerta } from "../Function";
+import { useCurrentUser } from "./UseCurrentUser";
 
 export function UseVotes() {
   const url = "http://localhost:5109/api/votes";
 
+  const { id: currentUserId } = useCurrentUser();
+
   const [statistics, setStatistics] = useState([]);
-  const [voterId, setVoterId] = useState("");
   const [candidateId, setCandidateId] = useState("");
   const [title, setTitle] = useState("");
 
@@ -41,7 +43,7 @@ export function UseVotes() {
       return;
     }
     parametros = {
-      voterId: voterId.trim(),
+      voterId: Number(currentUserId),
       candidateId: candidateId.trim(),
     };
     metodo = "POST";
@@ -61,6 +63,8 @@ export function UseVotes() {
         respuesta.status === 201
       ) {
         show_alerta("Operación completada exitosamente", "success");
+        localStorage.setItem("userHasVotedOrVotes", "true");
+        window.dispatchEvent(new Event("storage"));
         setShowModal(false);
         getStatistics();
       }
@@ -72,8 +76,6 @@ export function UseVotes() {
 
   return {
     statistics,
-    voterId,
-    setVoterId,
     candidateId,
     setCandidateId,
     title,

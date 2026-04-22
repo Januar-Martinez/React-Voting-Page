@@ -1,13 +1,28 @@
+import { useState, useEffect } from "react";
+
 export function useCurrentUser() {
-  const id   = localStorage.getItem("userId");
-  const name = localStorage.getItem("userName");
-  const EmailOrParty = localStorage.getItem("userEmailOrParty");
-  const HasVotedOrVotes = localStorage.getItem("userHasVotedOrVotes");
-  const isAuth = localStorage.getItem("isAuth") === "true";
+  const [user, setUser] = useState({
+    id: localStorage.getItem("userId"),
+    name: localStorage.getItem("userName"),
+    EmailOrParty: localStorage.getItem("userEmailOrParty"),
+    HasVotedOrVotes: localStorage.getItem("userHasVotedOrVotes"),
+    isAuth: localStorage.getItem("isAuth") === "true",
+  });
 
-  const logout = () => {
-    localStorage.clear();
-  };
+  useEffect(() => {
+    const syncUser = () => {
+      setUser({
+        id: localStorage.getItem("userId"),
+        name: localStorage.getItem("userName"),
+        EmailOrParty: localStorage.getItem("userEmailOrParty"),
+        HasVotedOrVotes: localStorage.getItem("userHasVotedOrVotes"),
+        isAuth: localStorage.getItem("isAuth") === "true",
+      });
+    };
 
-  return { id, name, EmailOrParty, HasVotedOrVotes, isAuth, logout };
+    window.addEventListener("storage", syncUser);
+    return () => window.removeEventListener("storage", syncUser);
+  }, []);
+
+  return { ...user };
 }

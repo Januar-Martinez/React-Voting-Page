@@ -5,11 +5,14 @@ import "../css/Administrator.css";
 import { FaUserTie, FaChartBar, FaSignOutAlt } from "react-icons/fa";
 import { useCurrentUser } from "../hook/UseCurrentUser";
 import ShowCandidates from "../components/ShowCandidates";
+import ShowVotes from "../components/ShowVotes";
 
 export default function Voter() {
   const { name, EmailOrParty, HasVotedOrVotes } = useCurrentUser();
   const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState(null);
+
+  const hasVoted = HasVotedOrVotes === true || HasVotedOrVotes === "true";
 
   const handleLogout = () => {
     localStorage.removeItem("isAuth");
@@ -51,9 +54,14 @@ export default function Voter() {
 
       <div className={`admin-content ${activeSection ? "visible" : ""}`}>
         {activeSection === "candidatos" && (
-          <ShowCandidates showCandidateAdd={false} showCandidateDelete={false} />
+          <ShowCandidates
+            showCandidateAdd={false}
+            showCandidateDelete={false}
+          />
         )}
-        {activeSection === "estadisticas" && <p>Aquí van las estadísticas</p>}
+        {activeSection === "estadisticas" && (
+          <ShowVotes showVoteButton={!hasVoted} />
+        )}
       </div>
     </div>
   );

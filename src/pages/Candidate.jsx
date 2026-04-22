@@ -4,6 +4,8 @@ import Card from "../components/MyCard";
 import "../css/Administrator.css";
 import { FaUserTie, FaChartBar, FaSignOutAlt } from "react-icons/fa";
 import { useCurrentUser } from "../hook/UseCurrentUser";
+import ShowCandidates from "../components/ShowCandidates";
+import ShowVotes from "../components/ShowVotes";
 
 export default function Candidate() {
   const { name, EmailOrParty, HasVotedOrVotes } = useCurrentUser();
@@ -49,8 +51,15 @@ export default function Candidate() {
       </div>
 
       <div className={`admin-content ${activeSection ? "visible" : ""}`}>
-        {activeSection === "candidatos" && <p>Aquí van los candidatos</p>}
-        {activeSection === "estadisticas" && <p>Aquí van las estadísticas</p>}
+        {activeSection === "candidatos" && (
+          <ShowCandidates
+            showCandidateAdd={false}
+            showCandidateDelete={false}
+          />
+        )}
+        {activeSection === "estadisticas" && (
+          <ShowVotes showVoteButton={false} />
+        )}
       </div>
     </div>
   );
